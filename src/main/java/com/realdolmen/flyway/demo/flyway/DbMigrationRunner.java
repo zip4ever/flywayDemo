@@ -1,6 +1,7 @@
 package com.realdolmen.flyway.demo.flyway;
 
 import org.flywaydb.core.Flyway;
+import org.flywaydb.core.api.callback.FlywayCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ class DbMigrationRunner {
             Flyway flyway = new Flyway();
             flyway.setBaselineOnMigrate(true);
             flyway.setDataSource(dataSource);
+            FlywayCallback myFlywayCallback = new MyFlywayCallbackImpl();
+            flyway.setCallbacks(myFlywayCallback);
             flyway.migrate();
             log.info("... done");
         } catch (Exception e) {
