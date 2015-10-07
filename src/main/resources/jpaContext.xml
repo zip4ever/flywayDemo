@@ -16,13 +16,13 @@
 
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
-    <!--<bean id="dbMigration" class="DbMigrationRunner"/>-->
+    <bean id="dbMigration" class="com.realdolmen.flyway.demo.flyway.DbMigrationRunner"/>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" depends-on="dbMigration">
         <property name="persistenceUnitName" value="punit"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter">
