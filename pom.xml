@@ -14,7 +14,7 @@
         <hibernate.version>4.3.1.Final</hibernate.version>
         <tomcat.version>7.0.54</tomcat.version>
     </properties>
-<!--
+
     <build>
         <finalName>flywayDemo</finalName>
         <plugins>
@@ -26,9 +26,11 @@
                     <url>jdbc:postgresql://localhost:5432/flywayDemo</url>
                     <user>postgres</user>
                     <password>password</password>
+                    <!--
                     <callbacks>
                         <callback>com.realdolmen.flyway.demo.flyway.MyFlywayCallbackImpl</callback>
                     </callbacks>
+                    -->
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -40,15 +42,14 @@
             </plugin>
         </plugins>
     </build>
--->
+
     <dependencies>
-        <!--
+
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
             <version>3.2.1</version>
         </dependency>
-        -->
 
         <!-- Logging -->
         <dependency>
